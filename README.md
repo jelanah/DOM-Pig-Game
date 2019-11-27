@@ -1,2 +1,2 @@
 # DOM-Pig-Game
-Pig game using JavaScript, CSS3 &amp; HTML5
+Pig game using JavaScript, CSS3 and HTML5

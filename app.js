@@ -15,34 +15,16 @@ var scores, roundScore, activePlayer, dice, gamePlaying;
 var diceDOM = document.querySelector('.dice'); // shortens for future use
 init();
 
-//console.log(dice);
 
-//querySelector to choose which elements to change //text content to chhange content of text
-//document.querySelector('#current-' + activePlayer).textContent = dice; //setter
-
-
-// document.querySelector('#current-' + activePlayer).innerHTML = '<em>'+ dice +'</em>';
-// innerHTMl to change the HTML code
-// getter
-// var x = document.querySelector('#score-0').textContent; // getter - get value
-// console.log(x);
-
-
-// function btn(){
-//     //Do something here
-// }
-
-//DOM Events listner
+// Activates "roll dice" button 
 document.querySelector('.btn-roll').addEventListener('click', function(){
 
     if(gamePlaying) {
 
-    
         // 1. random number between 1 & 6
         var dice = Math.floor(Math.random() * 6) + 1;
 
         // 2. Display result
-    
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
 
@@ -51,9 +33,9 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
             // Add Score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
-            
+        
+        // Next player
         } else {
-            // Next player
             nextPlayer();
         }   
     }
@@ -77,15 +59,12 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
             document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
 
             gamePlaying = false;
-
+        
+        // Next player
         } else {
-            // Next player
             nextPlayer();
         }
     }
-   
-
-
 });
 
 
@@ -99,10 +78,6 @@ function nextPlayer() {
 
      document.querySelector('.player-0-panel').classList.toggle('active');
      document.querySelector('.player-1-panel').classList.toggle('active');
-
-     // document.querySelector('.player-0-panel').classList.remove('active');
-     // document.querySelector('.player-1-panel').classList.add('active');
-
      diceDOM.style.display = 'none';
 }
 
@@ -110,19 +85,22 @@ document.querySelector('.btn-new').addEventListener('click', init); //listener c
 
 
 function init(){
- 
+    // Sets variables to initial values
     scores = [0,0];
     roundScore = 0;
     activePlayer = 0;
     gamePlaying = true;
-   
+  
+    // Dice disappears
     diceDOM.style.display = 'none'; 
 
+    // Resets scores
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
 
+    // Resets Player 1 & 2 visuals
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
 
